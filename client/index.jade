@@ -2,9 +2,21 @@ doctype html
 html(lang='en')
   head
     meta(charset='utf-8')
-    title Prototype
+    title Death by Zip
     link(rel='stylesheet', href='/style.css')
   body
-    h1 Hello, World
+    h1 Death by Zip Code
+    label Pick a Year
+    select#year
+      - for(var i = 1999; i < 2013; i++)
+        option= i
+
+    select#type
+      - var deaths = [{name:'Heart', value:'htd'}, {name:'Cancer', value:'can'}, {name:'Stroke', value:'stk'}, {name:'Respiratory', value:'cld'}, {name:'Accident', value:'inj'}, {name:'Pneumonia', value:'pnf'}, {name:'Diabetes', value:'dia'}, {name:'Alzheimers', value:'alz'}, {name:'Liver', value:'liv'}, {name:'Suicide', value:'sui'}, {name:'Homocide', value:'hom'}, {name:'Other', value:'oth'}, {name:'Unknown', value:'unk'}]
+      - each o in deaths
+        option(value=o.value)= o.name
+
+    button#get-data Get Data
     script(src='/vendor/jquery/dist/jquery.js')
+    script(src='/vendor/lodash/lodash.js')
     script(src='/main.js')
